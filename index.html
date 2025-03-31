@@ -7,6 +7,7 @@
   <meta name="author" content="Haoqing Wang">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -16,8 +17,14 @@
       padding: 20px;
     }
 
-    a { color: #007acc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     h2 {
       color: #007acc;
@@ -45,39 +52,130 @@
       padding: 20px 0;
     }
 
-    /* 折叠菜单样式略... 保留你已有的 */
-
-    /* 中英文切换按钮 */
-    .lang-toggle {
-      text-align: center;
-      margin: 10px auto;
-      font-size: 14px;
-    }
-
-    .lang-toggle button {
-      background-color: transparent;
-      border: 1px solid #007acc;
-      padding: 4px 12px;
-      font-size: 14px;
-      border-radius: 5px;
-      color: #007acc;
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
       cursor: pointer;
+      background: none;
+      border: none;
+      color: #007acc;
     }
 
-    .lang-toggle button:hover {
-      background-color: #007acc;
-      color: white;
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .hidden { display: none; }
+    .navbar a {
+      margin: 0 15px;
+      color: #007acc;
+      text-decoration: none;
+    }
 
-    /* 动画、响应式、省略，保留你已有的 fade-in-up、dark 模式等 */
+    .nav-links {
+      display: inline-block;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      a,
+      .menu-toggle {
+        color: #33aaff;
+      }
+
+      h2 {
+        color: #33aaff;
+        border-bottom: 2px solid #333;
+      }
+
+      .navbar {
+        background-color: #1e1e1e;
+        border-bottom: 1px solid #333;
+      }
+
+      .navbar a {
+        color: #33aaff;
+      }
+
+      img {
+        border: 1px solid #333;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      td {
+        display: block;
+        width: 100% !important;
+      }
+
+      .name {
+        font-size: 28px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      body {
+        padding: 10px;
+      }
+
+      .nav-links {
+        overflow: hidden;
+        max-height: 0;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        padding: 10px;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links-desktop {
+        display: none;
+      }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- 导航栏 + 折叠菜单 -->
+  <!-- 吸顶折叠菜单 -->
   <div class="navbar fade-in-up">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
@@ -89,33 +187,18 @@
     </div>
   </div>
 
-  <!-- 中英文切换按钮 -->
-  <div class="lang-toggle fade-in-up">
-    <button onclick="switchLang()">🌐 中文 / English</button>
-  </div>
-
-  <!-- About 区 -->
+  <!-- About Section -->
   <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;">
     <tr>
       <td style="width:63%;padding:2.5%;vertical-align:top">
         <h2 id="about">About</h2>
-        <div class="en">
-          <p class="name" style="font-size:32px;">Haoqing Wang</p>
-          <p>I'm a statistics student at <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a>.</p>
-          <p>
-            I'm passionate about data-driven technologies, particularly in the field of computer vision and interactive design.
-            I'm currently working as a research assistant on a 3D change detection video dataset project, where I help build and annotate data for object-level scene changes.
-            In the future, I'm aiming to pursue further research or graduate study in creative computing, such as the Entertainment Technology Center (ETC) at CMU.
-          </p>
-        </div>
-        <div class="zh hidden">
-          <p class="name" style="font-size:32px;">王昊清</p>
-          <p>我目前是 <a href="https://illinois.edu/">伊利诺伊大学香槟分校</a> 统计系的大一学生。</p>
-          <p>
-            我对数据驱动的计算机视觉和交互设计充满兴趣，正在参与一个关于 3D 变化检测视频数据集的科研项目，主要负责拍摄、标注、渲染和数据管理。
-            我的目标是在未来申请像卡内基梅隆大学 ETC 这样融合创意与技术的研究生项目。
-          </p>
-        </div>
+        <p class="name" style="font-size:32px;">Haoqing Wang</p>
+        <p>I'm a statistics student at <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a>.</p>
+        <p>
+          I'm passionate about data-driven technologies, particularly in the field of computer vision and interactive design.
+          I'm currently working as a research assistant on a 3D change detection video dataset project, where I help build and annotate data for object-level scene changes.
+          In the future, I'm aiming to pursue further research or graduate study in creative computing, such as the Entertainment Technology Center (ETC) at CMU.
+        </p>
         <p style="text-align:center">
           <a href="mailto:haoqingwang037@gmail.com">Email</a> &nbsp;/&nbsp;
           <a href="data/Haoqing-CV.pdf">CV</a> &nbsp;/&nbsp;
@@ -129,12 +212,12 @@
     </tr>
   </table>
 
-  <!-- Research 区 -->
+  <!-- Research Section -->
   <h2 id="research" class="fade-in-up">Research</h2>
   <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border-spacing:0 10px;">
     <tr>
       <td style="width:25%;padding:10px;vertical-align:top">
-        <img src="images/MonoPatchNeRF.png" class="project-img" style="width:100%;" alt="Project Example">
+        <img src="images/MonoPatchNeRF.png" style="width:100%;border:1px solid #ccc;" alt="Project Example">
       </td>
       <td style="width:75%;padding:10px;vertical-align:top">
         <strong>3D Change Detection Video Dataset Construction</strong><br>
@@ -170,20 +253,13 @@
     © 2025 Haoqing Wang · Built with HTML + CSS + ❤️
   </footer>
 
-  <!-- JS: 折叠菜单 + 语言切换 -->
+
+  <!-- JS for foldable nav -->
   <script>
     function toggleMenu() {
-      const nav = document.getElementById("navLinks");
+      var nav = document.getElementById("navLinks");
       nav.classList.toggle("active");
     }
-
-    function switchLang() {
-      const en = document.querySelectorAll('.en');
-      const zh = document.querySelectorAll('.zh');
-      en.forEach(e => e.classList.toggle('hidden'));
-      zh.forEach(z => z.classList.toggle('hidden'));
-    }
   </script>
-
 </body>
 </html>
