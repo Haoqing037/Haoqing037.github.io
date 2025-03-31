@@ -7,37 +7,35 @@
   <meta name="author" content="Haoqing Wang">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+
   <style>
+    /* 默认浅色主题 */
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
+      background-color: #f7f7f7;
+      color: #333;
       line-height: 1.6;
       padding: 20px;
     }
 
     a {
-      color: #33aaff;
+      color: #007acc;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
 
     h2 {
-      color: #33aaff;
-      border-bottom: 2px solid #333333;
+      color: #007acc;
+      border-bottom: 2px solid #ddd;
       padding-bottom: 4px;
     }
 
-    ul {
-      padding-left: 1.5em;
-    }
-
-    /* 导航栏 */
     .navbar {
-      background-color: #1e1e1e;
-      border-bottom: 1px solid #333333;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
       padding: 10px 0;
       text-align: center;
       font-size: 16px;
@@ -45,42 +43,83 @@
       top: 0;
       z-index: 1000;
     }
+
     .navbar a {
       margin: 0 20px;
-      color: #33aaff;
+      color: #007acc;
     }
 
-    /* 项目卡片图片边框 */
     img {
-      border: 1px solid #333333;
+      border: 1px solid #ddd;
     }
 
-    /* 响应式保持不变 */
+    /* 深色模式 */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      a {
+        color: #33aaff;
+      }
+      h2 {
+        color: #33aaff;
+        border-bottom: 2px solid #333;
+      }
+      .navbar {
+        background-color: #1e1e1e;
+        border-bottom: 1px solid #333;
+      }
+      .navbar a {
+        color: #33aaff;
+      }
+      img {
+        border: 1px solid #333;
+      }
+    }
+
+    /* 响应式 */
     @media screen and (max-width: 600px) {
       td {
         display: block;
         width: 100% !important;
       }
+
       .name {
         font-size: 28px;
       }
+
       img {
         max-width: 100%;
         height: auto;
       }
+
       body {
         padding: 10px;
       }
     }
 
-    
+    /* 页面动画 */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- 导航栏 -->
-  <div class="navbar">
+  <div class="navbar fade-in-up">
     <a href="#about">About</a>
     <a href="#research">Research</a>
     <a href="#skills">Skills</a>
@@ -88,7 +127,8 @@
     <a href="mailto:haoqingwang037@gmail.com">Contact</a>
   </div>
 
-  <table style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;">
+  <!-- 个人简介 -->
+  <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;">
     <tr>
       <td style="width:63%;padding:2.5%;vertical-align:top">
         <h2 id="about">About</h2>
@@ -113,11 +153,11 @@
   </table>
 
   <!-- 研究项目 -->
-  <h2 id="research">Research</h2>
-  <table style="width:100%;max-width:800px;margin:auto;border-spacing:0 10px;">
+  <h2 id="research" class="fade-in-up">Research</h2>
+  <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border-spacing:0 10px;">
     <tr>
       <td style="width:25%;padding:10px;vertical-align:top">
-        <img src="images/project_sample.jpg" style="width:100%;border:1px solid #ccc;" alt="Project Example">
+        <img src="images/MonoPatchNeRF.png" style="width:100%;border:1px solid #ccc;" alt="Project Example">
       </td>
       <td style="width:75%;padding:10px;vertical-align:top">
         <strong>3D Change Detection Video Dataset Construction</strong><br>
@@ -131,8 +171,8 @@
   </table>
 
   <!-- 技能模块 -->
-  <h2 id="skills">Skills</h2>
-  <ul style="max-width:800px;margin:auto;">
+  <h2 id="skills" class="fade-in-up">Skills</h2>
+  <ul class="fade-in-up" style="max-width:800px;margin:auto;">
     <li><strong>Programming:</strong> Python (basic), Git, Markdown</li>
     <li><strong>Tools:</strong> GitHub, VS Code, Jekyll, GitHub Pages, Google Sheets</li>
     <li><strong>Data:</strong> Image annotation, dataset curation, spreadsheet tracking</li>
@@ -141,8 +181,8 @@
   </ul>
 
   <!-- 目标模块 -->
-  <h2 id="goals">Goals</h2>
-  <p style="max-width:800px;margin:auto;">
+  <h2 id="goals" class="fade-in-up">Goals</h2>
+  <p class="fade-in-up" style="max-width:800px;margin:auto;">
     I'm currently focused on building my technical foundation through hands-on projects in computer vision and data analysis.
     I’m especially interested in the intersection of technology and creativity, including visual storytelling, generative systems, and interactive experiences.
     In the future, I hope to pursue graduate study at programs such as the Entertainment Technology Center (ETC) at Carnegie Mellon University, where I can explore the artistic side of computing through research and creation.
@@ -150,4 +190,3 @@
 
 </body>
 </html>
-  
