@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
 
   <style>
-    /* 默认浅色主题 */
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f7f7f7;
@@ -33,10 +32,23 @@
       padding-bottom: 4px;
     }
 
+    img {
+      border: 1px solid #ddd;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #007acc;
+    }
+
     .navbar {
       background-color: #ffffff;
       border-bottom: 1px solid #ddd;
-      padding: 10px 0;
+      padding: 10px 20px;
       text-align: center;
       font-size: 16px;
       position: sticky;
@@ -45,40 +57,45 @@
     }
 
     .navbar a {
-      margin: 0 20px;
+      margin: 0 15px;
       color: #007acc;
+      text-decoration: none;
     }
 
-    img {
-      border: 1px solid #ddd;
+    .nav-links {
+      display: inline-block;
     }
 
-    /* 深色模式 */
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #121212;
         color: #e0e0e0;
       }
-      a {
+
+      a,
+      .menu-toggle {
         color: #33aaff;
       }
+
       h2 {
         color: #33aaff;
         border-bottom: 2px solid #333;
       }
+
       .navbar {
         background-color: #1e1e1e;
         border-bottom: 1px solid #333;
       }
+
       .navbar a {
         color: #33aaff;
       }
+
       img {
         border: 1px solid #333;
       }
     }
 
-    /* 响应式 */
     @media screen and (max-width: 600px) {
       td {
         display: block;
@@ -97,9 +114,33 @@
       body {
         padding: 10px;
       }
+
+      .nav-links {
+        overflow: hidden;
+        max-height: 0;
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.5s ease-out;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        padding: 10px;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links-desktop {
+        display: none;
+      }
     }
 
-    /* 页面动画 */
     .fade-in-up {
       opacity: 0;
       transform: translateY(30px);
@@ -118,16 +159,19 @@
 
 <body>
 
-  <!-- 导航栏 -->
+  <!-- 吸顶折叠菜单 -->
   <div class="navbar fade-in-up">
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#skills">Skills</a>
-    <a href="#goals">Goals</a>
-    <a href="mailto:haoqingwang037@gmail.com">Contact</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="#goals">Goals</a>
+      <a href="mailto:haoqingwang037@gmail.com">Contact</a>
+    </div>
   </div>
 
-  <!-- 个人简介 -->
+  <!-- About Section -->
   <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;">
     <tr>
       <td style="width:63%;padding:2.5%;vertical-align:top">
@@ -152,7 +196,7 @@
     </tr>
   </table>
 
-  <!-- 研究项目 -->
+  <!-- Research Section -->
   <h2 id="research" class="fade-in-up">Research</h2>
   <table class="fade-in-up" style="width:100%;max-width:800px;margin:auto;border-spacing:0 10px;">
     <tr>
@@ -170,7 +214,7 @@
     </tr>
   </table>
 
-  <!-- 技能模块 -->
+  <!-- Skills -->
   <h2 id="skills" class="fade-in-up">Skills</h2>
   <ul class="fade-in-up" style="max-width:800px;margin:auto;">
     <li><strong>Programming:</strong> Java, C++, Python (basic), Git, Markdown</li>
@@ -180,7 +224,7 @@
     <li><strong>Languages:</strong> Native Mandarin, Fluent English</li>
   </ul>
 
-  <!-- 目标模块 -->
+  <!-- Goals -->
   <h2 id="goals" class="fade-in-up">Goals</h2>
   <p class="fade-in-up" style="max-width:800px;margin:auto;">
     I'm currently focused on building my technical foundation through hands-on projects in computer vision and data analysis.
@@ -188,5 +232,12 @@
     In the future, I hope to pursue graduate study at programs such as the Entertainment Technology Center (ETC) at Carnegie Mellon University, where I can explore the artistic side of computing through research and creation.
   </p>
 
+  <!-- JS for foldable nav -->
+  <script>
+    function toggleMenu() {
+      var nav = document.getElementById("navLinks");
+      nav.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
