@@ -1,90 +1,142 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Haoqing Wang</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Haoqing Wang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Haoqing Wang">
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h2 {
+      color: #007acc;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 4px;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    /* 导航栏样式 */
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      margin: 0 20px;
+      color: #007acc;
+    }
 
-    <meta name="author" content="Haoqing Wang">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  </head>
+    /* 响应式 */
+    @media screen and (max-width: 600px) {
+      td {
+        display: block;
+        width: 100% !important;
+      }
+      .name {
+        font-size: 28px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr style="padding:0px">
-          <td style="padding:0px">
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr style="padding:0px">
-                  <td style="padding:2.5%;width:63%;vertical-align:middle">
-                    <p class="name" style="text-align: center;">
-                      Haoqing Wang
-                    </p>
-                    <p>I'm a statistics student at <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a>.</p>
-                    <p>
-                      I'm passionate about data-driven technologies, particularly in the field of computer vision and interactive design.
-                      I'm currently working as a research assistant on a 3D change detection video dataset project, where I help build and annotate data for object-level scene changes.
-                      In the future, I'm aiming to pursue further research or graduate study in creative computing, such as the Entertainment Technology Center (ETC) at CMU.
-                    </p>
-                    <p style="text-align:center">
-                      <a href="mailto:haoqingwang037@gmail.com">Email</a> &nbsp;/&nbsp;
-                      <a href="data/Haoqing-CV.pdf">CV</a> &nbsp;/&nbsp;
-                      <a href="https://github.com/haoqing037/">Github</a> &nbsp;/&nbsp;
-                      <a href="https://www.linkedin.com/in/haoqing-wang-877112358/">Linkedin</a>
-                    </p>
-                  </td>
-                  <td style="padding:2.5%;width:37%;max-width:37%">
-                    <a href="images/haoqingv2.jpg">
-                      <img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/haoqingv2.jpg" class="hoverZoomLink">
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+<body>
 
-            <!-- Research Section -->
-            <h2>Research</h2>
-            <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-              <tr>
-                <td style="padding:16px;width:20%;vertical-align:middle">
-                  <img src='images/your_project_image.jpg' width="100%">
-                </td>
-                <td style="padding:8px;width:80%;vertical-align:middle">
-                  <span class="papertitle">3D Change Detection Video Dataset Construction</span><br>
-                  <strong>Haoqing Wang</strong><br>
-                  <em>Undergraduate Research Assistant, UIUC</em>, 2025<br>
-                  <p>
-                    Capturing real-world scene variations by recording short before-and-after videos where 0–8 objects are added, moved, or removed.
-                    Contributions include dataset creation, pixel-level annotation via mask interface, rendering validation, and structured metadata logging for vision model training.
-                  </p>
-                </td>
-              </tr>
-            </table>
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#goals">Goals</a>
+    <a href="mailto:haoqingwang037@gmail.com">Contact</a>
+  </div>
 
-            <!-- Skills Section -->
-            <h2>Skills</h2>
-            <ul>
-              <li><strong>Programming:</strong> Java, C++, Python (basic), Git, Markdown</li>
-              <li><strong>Tools:</strong> GitHub, VS Code, GitHub Pages, Google Sheets</li>
-              <li><strong>Data:</strong> Image annotation, dataset curation, spreadsheet tracking</li>
-              <li><strong>Web:</strong> HTML, basic CSS</li>
-              <li><strong>Languages:</strong> Native Mandarin, Fluent English</li>
-            </ul>
+  <table style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;">
+    <tr>
+      <td style="width:63%;padding:2.5%;vertical-align:top">
+        <h2 id="about">About</h2>
+        <p class="name" style="font-size:32px;">Haoqing Wang</p>
+        <p>I'm a statistics student at <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a>.</p>
+        <p>
+          I'm passionate about data-driven technologies, particularly in the field of computer vision and interactive design.
+          I'm currently working as a research assistant on a 3D change detection video dataset project, where I help build and annotate data for object-level scene changes.
+          In the future, I'm aiming to pursue further research or graduate study in creative computing, such as the Entertainment Technology Center (ETC) at CMU.
+        </p>
+        <p style="text-align:center">
+          <a href="mailto:haoqingwang037@gmail.com">Email</a> &nbsp;/&nbsp;
+          <a href="data/Haoqing-CV.pdf">CV</a> &nbsp;/&nbsp;
+          <a href="https://github.com/haoqing037/">GitHub</a> &nbsp;/&nbsp;
+          <a href="https://www.linkedin.com/in/haoqing-wang-877112358/">LinkedIn</a>
+        </p>
+      </td>
+      <td style="width:37%;padding:2.5%;">
+        <img src="images/haoqingv2.jpg" alt="Haoqing Wang" style="width:100%;border-radius:50%;">
+      </td>
+    </tr>
+  </table>
 
-            <!-- Goals Section -->
-            <h2>Goals</h2>
-            <p>
-              I'm currently focused on building my technical foundation through hands-on projects in computer vision and data analysis.
-              I'm especially interested in the intersection of technology and creativity, including visual storytelling, generative systems, and interactive experiences.
-              In the future, I hope to pursue graduate study at programs such as the Entertainment Technology Center (ETC) at Carnegie Mellon University, where I can explore the artistic side of computing through research and creation.
-            </p>
+  <!-- 研究项目 -->
+  <h2 id="research">Research</h2>
+  <table style="width:100%;max-width:800px;margin:auto;border-spacing:0 10px;">
+    <tr>
+      <td style="width:25%;padding:10px;vertical-align:top">
+        <img src="images/project_sample.jpg" style="width:100%;border:1px solid #ccc;" alt="Project Example">
+      </td>
+      <td style="width:75%;padding:10px;vertical-align:top">
+        <strong>3D Change Detection Video Dataset Construction</strong><br>
+        <em>Undergraduate Research Assistant, UIUC</em>, 2025
+        <p>
+          Capturing real-world scene variations by recording short before-and-after videos where 0–8 objects are added, moved, or removed.
+          Contributions include dataset creation, pixel-level annotation via mask interface, rendering validation, and structured metadata logging for vision model training.
+        </p>
+      </td>
+    </tr>
+  </table>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+  <!-- 技能模块 -->
+  <h2 id="skills">Skills</h2>
+  <ul style="max-width:800px;margin:auto;">
+    <li><strong>Programming:</strong> Python (basic), Git, Markdown</li>
+    <li><strong>Tools:</strong> GitHub, VS Code, Jekyll, GitHub Pages, Google Sheets</li>
+    <li><strong>Data:</strong> Image annotation, dataset curation, spreadsheet tracking</li>
+    <li><strong>Web:</strong> HTML, basic CSS</li>
+    <li><strong>Languages:</strong> Native Mandarin, Fluent English</li>
+  </ul>
+
+  <!-- 目标模块 -->
+  <h2 id="goals">Goals</h2>
+  <p style="max-width:800px;margin:auto;">
+    I'm currently focused on building my technical foundation through hands-on projects in computer vision and data analysis.
+    I’m especially interested in the intersection of technology and creativity, including visual storytelling, generative systems, and interactive experiences.
+    In the future, I hope to pursue graduate study at programs such as the Entertainment Technology Center (ETC) at Carnegie Mellon University, where I can explore the artistic side of computing through research and creation.
+  </p>
+
+</body>
 </html>
-
+  
